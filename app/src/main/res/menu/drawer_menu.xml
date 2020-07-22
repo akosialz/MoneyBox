@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_personalize"
+            android:icon="@drawable/ic_menu_personalize"
+            android:title="Personalize" />
+        <item android:id="@+id/nav_currency"
+            android:icon="@drawable/ic_menu_currency"
+            android:title="Currency" />
+        <item android:id="@+id/nav_graph"
+            android:icon="@drawable/ic_menu_graph"
+            android:title="Change Graph" />
+        <item android:id="@+id/nav_archives"
+            android:icon="@drawable/ic_menu_archives"
+            android:title="Archives" />
+        <item android:id="@+id/nav_support"
+            android:icon="@drawable/ic_menu_support"
+            android:title="Support" />
+    </group>
+</menu>
