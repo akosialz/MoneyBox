@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -40,6 +41,9 @@ public class CreateMoneyBox extends AppCompatActivity {
 
     public void createMoneyBox(View v) {
 
+        Intent intent = new Intent(CreateMoneyBox.this, MainActivity.class);
+        intent.putExtra("isEmpty", false);
+        startActivity(intent);
     }
 
     public void pickTime(View v) {

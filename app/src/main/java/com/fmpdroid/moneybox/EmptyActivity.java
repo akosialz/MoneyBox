@@ -25,4 +25,9 @@ public class EmptyActivity extends AppCompatActivity {
         Intent myIntent = new Intent(EmptyActivity.this, CreateMoneyBox.class);
         EmptyActivity.this.startActivity(myIntent);
     }
+
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
+    }
 }
