@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -18,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (getIntent().getBooleanExtra("isEmpty", true)) {
-            Intent myIntent = new Intent(MainActivity.this, EmptyActivity.class);
+        if (getIntent().getBooleanExtra(this.getResources().getString(R.string.key_isEmpty), true)) {
+            Intent myIntent = new Intent(this, EmptyActivity.class);
             MainActivity.this.startActivity(myIntent);
         } else {
             goToDrawerScreen();

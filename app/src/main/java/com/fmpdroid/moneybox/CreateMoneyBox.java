@@ -42,7 +42,7 @@ public class CreateMoneyBox extends AppCompatActivity {
     public void createMoneyBox(View v) {
 
         Intent intent = new Intent(CreateMoneyBox.this, MainActivity.class);
-        intent.putExtra("isEmpty", false);
+        intent.putExtra(this.getResources().getString(R.string.key_isEmpty), false);
         startActivity(intent);
     }
 
