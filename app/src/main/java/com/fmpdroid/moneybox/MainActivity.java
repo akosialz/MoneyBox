@@ -18,8 +18,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent myIntent = new Intent(MainActivity.this, EmptyActivity.class);
-        MainActivity.this.startActivity(myIntent);
+        if (getIntent().getBooleanExtra(this.getResources().getString(R.string.key_isEmpty), true)) {
+            Intent myIntent = new Intent(this, EmptyActivity.class);
+            MainActivity.this.startActivity(myIntent);
+        } else {
+            goToDrawerScreen();
+        }
+
     }
 
     private void goToDrawerScreen() {
@@ -43,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            finishAffinity();
         }
     }
 
