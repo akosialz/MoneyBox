@@ -8,18 +8,17 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerViewAccessibilityDelegate;
 
 import com.fmpdroid.moneybox.R;
-import com.fmpdroid.moneybox.dto.MoneyBox;
+import com.fmpdroid.moneybox.dto.MoneyBoxDto;
 
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MoneyBoxViewHolder> {
 
-    private List<MoneyBox> moneyBoxList;
+    private List<MoneyBoxDto> moneyBoxList;
 
-    public RecyclerViewAdapter(List<MoneyBox> moneyBoxList) {
+    public RecyclerViewAdapter(List<MoneyBoxDto> moneyBoxList) {
         this.moneyBoxList = moneyBoxList;
     }
 
@@ -33,7 +32,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(MoneyBoxViewHolder holder, int position) {
-        MoneyBox moneyBox = moneyBoxList.get(position);
+        MoneyBoxDto moneyBox = moneyBoxList.get(position);
         holder.Icon.setImageResource(R.drawable.ic_menu_currency);
         holder.Title.setText(moneyBox.getTitle());
         holder.DateCreated.setText(moneyBox.getDateCreated());

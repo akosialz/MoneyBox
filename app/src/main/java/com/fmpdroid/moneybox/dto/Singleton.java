@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Singleton {
 
-    private List<MoneyBox> moneyBoxList;
+    private List<MoneyBoxDto> moneyBoxList;
 
     private static Singleton instance;
 
@@ -19,14 +19,14 @@ public class Singleton {
         return instance;
     }
 
-    public void addMoneyBox(MoneyBox moneybox) {
+    public void addMoneyBox(MoneyBoxDto moneybox) {
         if (moneyBoxList == null){
             moneyBoxList = new ArrayList<>();
         }
         moneyBoxList.add(moneybox);
     }
 
-    public List<MoneyBox> getMoneyBoxList(){
+    public List<MoneyBoxDto> getMoneyBoxList(){
         return moneyBoxList;
     }
 }

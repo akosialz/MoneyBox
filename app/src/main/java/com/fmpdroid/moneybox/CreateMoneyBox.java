@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Switch;
 
-import com.fmpdroid.moneybox.dto.MoneyBox;
+import com.fmpdroid.moneybox.dto.MoneyBoxDto;
 import com.fmpdroid.moneybox.dto.Singleton;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -55,7 +55,7 @@ public class CreateMoneyBox extends AppCompatActivity {
 
         Intent intent = new Intent(CreateMoneyBox.this, MainActivity.class);
         intent.putExtra(this.getResources().getString(R.string.key_isEmpty), false);
-        MoneyBox moneyBox = new MoneyBox();
+        MoneyBoxDto moneyBox = new MoneyBoxDto();
         moneyBox.setAllowReminder(mSwitch.isChecked());
         moneyBox.setDateCreated(edtDate.getText().toString());
         moneyBox.setDescription(edtDescription.getText().toString());

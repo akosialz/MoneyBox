@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.fmpdroid.moneybox.Adapter.RecyclerViewAdapter;
-import com.fmpdroid.moneybox.dto.MoneyBox;
+import com.fmpdroid.moneybox.dto.MoneyBoxDto;
 import com.fmpdroid.moneybox.dto.Singleton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -46,7 +46,7 @@ public class HomeFragment extends Fragment {
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         Singleton singleton = Singleton.getInstance();
-        List<MoneyBox> moneyBoxList = singleton.getMoneyBoxList();
+        List<MoneyBoxDto> moneyBoxList = singleton.getMoneyBoxList();
         if (moneyBoxList.size() != 0){
             adapter = new RecyclerViewAdapter(moneyBoxList);
             recyclerView.setAdapter(adapter);
