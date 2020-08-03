@@ -1,4 +1,4 @@
-package com.fmpdroid.moneybox.Adapter;
+package com.fmpdroid.moneybox.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,11 +33,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(MoneyBoxViewHolder holder, int position) {
         MoneyBoxDto moneyBox = moneyBoxList.get(position);
-        holder.Icon.setImageResource(R.drawable.ic_menu_currency);
-        holder.Title.setText(moneyBox.getTitle());
-        holder.DateCreated.setText(moneyBox.getDateCreated());
-        holder.Description.setText(moneyBox.getDescription());
-        holder.TargetAmount.setText(String.valueOf(moneyBox.getTargetAmount()));
+        holder.icon.setImageResource(R.drawable.ic_menu_currency);
+        holder.title.setText(moneyBox.getTitle());
+        holder.dateCreated.setText(moneyBox.getDateCreated());
+        holder.description.setText(moneyBox.getDescription());
+        holder.targetAmount.setText(String.valueOf(moneyBox.getTargetAmount()));
     }
 
     @Override
@@ -47,19 +47,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public static class MoneyBoxViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView Icon;
-        TextView Title;
-        TextView Description;
-        TextView TargetAmount;
-        TextView DateCreated;
+        ImageView icon;
+        TextView title;
+        TextView description;
+        TextView targetAmount;
+        TextView dateCreated;
 
         public MoneyBoxViewHolder(@NonNull View itemView) {
             super(itemView);
-            Icon = itemView.findViewById(R.id.item_icon);
-            Title = itemView.findViewById(R.id.item_title);
-            TargetAmount = itemView.findViewById(R.id.item_target_amount);
-            Description = itemView.findViewById(R.id.item_description);
-            DateCreated = itemView.findViewById(R.id.item_date_created);
+            icon = itemView.findViewById(R.id.item_icon);
+            title = itemView.findViewById(R.id.item_title);
+            targetAmount = itemView.findViewById(R.id.item_target_amount);
+            description = itemView.findViewById(R.id.item_description);
+            dateCreated = itemView.findViewById(R.id.item_date_created);
         }
     }
 }

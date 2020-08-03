@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
-        getSupportActionBar().setTitle("Money Box");
+        getSupportActionBar().setTitle(R.string.title_main_page);
 
         drawer = findViewById(R.id.drawer_layout);
 

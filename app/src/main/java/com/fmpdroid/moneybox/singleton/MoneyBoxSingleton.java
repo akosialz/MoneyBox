@@ -1,20 +1,22 @@
-package com.fmpdroid.moneybox.dto;
+package com.fmpdroid.moneybox.singleton;
+
+import com.fmpdroid.moneybox.dto.MoneyBoxDto;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Singleton {
+public class MoneyBoxSingleton {
 
     private List<MoneyBoxDto> moneyBoxList;
 
-    private static Singleton instance;
+    private static MoneyBoxSingleton instance;
 
-    private Singleton(){
+    private MoneyBoxSingleton(){
 
     }
-    public static Singleton getInstance() {
+    public static MoneyBoxSingleton getInstance() {
         if (instance == null) {
-            instance = new Singleton();
+            instance = new MoneyBoxSingleton();
         }
         return instance;
     }
@@ -26,7 +28,7 @@ public class Singleton {
         moneyBoxList.add(moneybox);
     }
 
-    public List<MoneyBoxDto> getMoneyBoxList(){
+    public java.util.List<MoneyBoxDto> getMoneyBoxList(){
         return moneyBoxList;
     }
 }
