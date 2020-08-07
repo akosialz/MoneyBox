@@ -34,7 +34,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(MoneyBoxViewHolder holder, int position) {
         MoneyBoxDto moneyBox = moneyBoxList.get(position);
         holder.icon.setImageResource(R.drawable.ic_menu_currency);
-        holder.title.setText(moneyBox.getTitle());
+        holder.title.setText(moneyBox.getName());
         holder.dateCreated.setText(moneyBox.getDateCreated());
         holder.description.setText(moneyBox.getDescription());
         holder.targetAmount.setText(String.valueOf(moneyBox.getTargetAmount()));

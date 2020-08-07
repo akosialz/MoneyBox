@@ -13,8 +13,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
-import com.fmpdroid.moneybox.adapter.RecyclerViewAdapter;
+import com.fmpdroid.moneybox.adapter.ViewPagerAdapter;
 import com.fmpdroid.moneybox.dto.MoneyBoxDto;
 import com.fmpdroid.moneybox.singleton.MoneyBoxSingleton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -23,9 +24,11 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    private RecyclerViewAdapter adapter;
     private RecyclerView recyclerView;
     private FloatingActionButton button;
+    private ViewPagerAdapter adapter;
+    private ViewPager2 viewPager;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,6 +40,9 @@ public class HomeFragment extends Fragment {
             Intent myIntent = new Intent(getContext(), CreateMoneyBox.class);
             getActivity().startActivity(myIntent);
         });
+        viewPager = view.findViewById(R.id.viewPager);
+        adapter = new ViewPagerAdapter(getActivity());
+        viewPager.setAdapter(adapter);
         return view;
     }
 
@@ -45,11 +51,9 @@ public class HomeFragment extends Fragment {
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         List<MoneyBoxDto> moneyBoxList = MoneyBoxSingleton.getInstance().getMoneyBoxList();
-        if (moneyBoxList.size() > 0){
-            adapter = new RecyclerViewAdapter(moneyBoxList);
+        if (moneyBoxList.size() > 0) {
             recyclerView.setAdapter(adapter);
-        }
-        else{
+        } else {
             recyclerView.setVisibility(View.GONE);
             TextView txtEmpty = view.findViewById(R.id.txtEmptyRecyclerView);
             txtEmpty.setVisibility(View.VISIBLE);

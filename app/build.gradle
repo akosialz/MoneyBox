@@ -42,5 +42,6 @@ dependencies {
     compileOnly 'com.google.android.wearable:wearable:2.5.0'
     compileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    implementation 'androidx.viewpager2:viewpager2:1.1.0-alpha01'
 
 }
