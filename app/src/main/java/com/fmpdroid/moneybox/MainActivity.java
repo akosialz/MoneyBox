@@ -41,10 +41,15 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 new HomeFragment()).commit();
+<<<<<<< HEAD
 
     }
 
 
+=======
+    }
+
+>>>>>>> fe2d9cfe45ba8a5ba3b059a04ca5d71d8102b48b
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
