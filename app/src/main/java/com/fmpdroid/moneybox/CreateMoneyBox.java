@@ -50,6 +50,7 @@ public class CreateMoneyBox extends AppCompatActivity {
 
         edtTime.setText(String.format("%02d:%02d", mCalendar.get(Calendar.HOUR_OF_DAY), mCalendar.get(Calendar.MINUTE)));
         edtTargetDate.setText(mCalendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + mCalendar.get(Calendar.DAY_OF_MONTH) + ", " + mCalendar.get(Calendar.YEAR));
+
     }
 
     public void createMoneyBox(View v) {
