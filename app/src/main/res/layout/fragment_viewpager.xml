@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar_main" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nothing here"
+            android:layout_gravity="center"/>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </FrameLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="220dp"
+        android:layout_marginBottom="30dp"
+        android:layout_gravity="center_horizontal|bottom"
+        app:layout_anchor="@+id/viewPager"
+        android:onClick="addMoneyBox"
+        app:layout_anchorGravity="center_horizontal|bottom"
+        app:srcCompat="@drawable/ic_button_add" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="220dp"
+        android:layout_marginBottom="30dp"
+        app:layout_anchor="@+id/viewPager"
+        android:onClick="deleteMoneyBox"
+        app:layout_anchorGravity="center_horizontal|bottom"
+        app:srcCompat="@drawable/ic_button_delete" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

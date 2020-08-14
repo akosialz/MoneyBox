@@ -13,4 +13,5 @@
     <string name="navigation_drawer_close">Close Navigation Drawer</string>
     <string name="title_activity_empty">EmptyActivity</string>
     <string name="key_isEmpty">isEmpty</string>
+    <string name="key_moneybox">moneyBox</string>
 </resources>
