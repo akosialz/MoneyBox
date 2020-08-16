@@ -34,7 +34,7 @@ public class HomeFragment extends Fragment {
 
         button = view.findViewById(R.id.fabAddToList);
         button.setOnClickListener(view1 -> {
-            Intent myIntent = new Intent(getContext(), CreateMoneyBox.class);
+            Intent myIntent = new Intent(getContext(), CreateMoneyBoxActivity.class);
             getActivity().startActivity(myIntent);
         });
         return view;

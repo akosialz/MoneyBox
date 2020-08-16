@@ -18,9 +18,9 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class CreateMoneyBox extends AppCompatActivity {
+public class CreateMoneyBoxActivity extends AppCompatActivity {
 
-    private Context mContext = CreateMoneyBox.this;
+    private Context mContext = CreateMoneyBoxActivity.this;
     private Calendar mCalendar = Calendar.getInstance();
     private TextInputEditText edtTime;
     private TextInputEditText edtDate;
@@ -52,7 +52,7 @@ public class CreateMoneyBox extends AppCompatActivity {
 
     public void createMoneyBox(View v) {
 
-        Intent intent = new Intent(CreateMoneyBox.this, MainActivity.class);
+        Intent intent = new Intent(CreateMoneyBoxActivity.this, MainActivity.class);
         intent.putExtra(this.getResources().getString(R.string.key_isEmpty), false);
         MoneyBoxDto moneyBox = new MoneyBoxDto();
         moneyBox.setAllowReminder(mSwitch.isChecked());
