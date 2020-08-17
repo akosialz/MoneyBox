@@ -18,7 +18,7 @@
             android:label="@string/title_activity_empty"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".CreateMoneyBox"
+            android:name=".CreateMoneyBoxActivity"
             android:label="@string/title_activity_create_money_box" />
         <activity android:name=".MainActivity">
             <intent-filter>

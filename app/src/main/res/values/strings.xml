@@ -2,6 +2,7 @@
     <string name="app_name">MoneyBox</string>
     <string name="add_money_box">Add Money Box</string>
     <string name="title_activity_create_money_box">Create New Money Box</string>
+    <string name="title_main_page">Money Box</string>
     <string name="money_box_name">Money Box Name</string>
     <string name="money_box_description">Description</string>
     <string name="money_box_target_amount">Target Amount</string>
@@ -11,6 +12,5 @@
     <string name="navigation_drawer_open">Open Navigation Drawer</string>
     <string name="navigation_drawer_close">Close Navigation Drawer</string>
     <string name="title_activity_empty">EmptyActivity</string>
-
     <string name="key_isEmpty">isEmpty</string>
 </resources>
