@@ -22,7 +22,7 @@ public class EmptyActivity extends AppCompatActivity {
     }
 
     public void addMoneyBox(View v) {
-        Intent myIntent = new Intent(EmptyActivity.this, CreateMoneyBox.class);
+        Intent myIntent = new Intent(EmptyActivity.this, CreateMoneyBoxActivity.class);
         EmptyActivity.this.startActivity(myIntent);
     }
 

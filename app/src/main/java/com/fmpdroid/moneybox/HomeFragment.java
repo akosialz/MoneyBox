@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-<<<<<<< HEAD
+
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -62,5 +62,27 @@ public class HomeFragment extends Fragment {
 
     }
 
+        button = view.findViewById(R.id.fabAddToList);
+        button.setOnClickListener(view1 -> {
+            Intent myIntent = new Intent(getContext(), CreateMoneyBoxActivity.class);
+            getActivity().startActivity(myIntent);
+        });
+        return view;
+    }
 
+    private void setUpRecyclerView(View view) {
+        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        List<MoneyBoxDto> moneyBoxList = MoneyBoxSingleton.getInstance().getMoneyBoxList();
+        if (moneyBoxList.size() > 0){
+            adapter = new RecyclerViewAdapter(moneyBoxList);
+            recyclerView.setAdapter(adapter);
+        }
+        else{
+            recyclerView.setVisibility(View.GONE);
+            TextView txtEmpty = view.findViewById(R.id.txtEmptyRecyclerView);
+            txtEmpty.setVisibility(View.VISIBLE);
+        }
+    }
 }
