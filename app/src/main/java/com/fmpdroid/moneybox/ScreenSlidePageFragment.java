@@ -10,11 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager2.widget.ViewPager2;
 
-import com.fmpdroid.moneybox.adapter.ViewPagerAdapter;
 import com.fmpdroid.moneybox.dto.MoneyBoxDto;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ScreenSlidePageFragment extends Fragment {
 

@@ -29,10 +29,8 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         TextView textView = fa.findViewById(R.id.tv_empty);
-        if (fragments.size() == 0)
-            textView.setVisibility(View.VISIBLE);
-        else
-            textView.setVisibility(View.GONE);
+        int visibilityValue = fragments.size() == 0 ? View.VISIBLE : View.GONE;
+        textView.setVisibility(visibilityValue);
         return fragments.get(position);
     }
 
@@ -43,7 +41,6 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
 
     @Override
     public long getItemId(int position) {
-
         return super.getItemId(position);
     }
 
