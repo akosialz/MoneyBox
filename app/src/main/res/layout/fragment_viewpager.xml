@@ -30,14 +30,27 @@
         android:id="@+id/fabAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_gravity="end|bottom"
+        android:layout_marginRight="220dp"
+        android:layout_marginBottom="30dp"
+        android:layout_gravity="center_horizontal|bottom"
         app:layout_anchor="@+id/viewPager"
         android:onClick="addMoneyBox"
-        app:layout_anchorGravity="right|bottom"
+        app:layout_anchorGravity="center_horizontal|bottom"
         app:srcCompat="@drawable/ic_button_add" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="220dp"
+        android:layout_marginBottom="30dp"
+        app:layout_anchor="@+id/viewPager"
+        android:onClick="deleteMoneyBox"
+        app:layout_anchorGravity="center_horizontal|bottom"
+        app:srcCompat="@drawable/ic_button_delete" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

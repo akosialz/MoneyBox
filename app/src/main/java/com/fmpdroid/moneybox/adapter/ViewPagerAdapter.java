@@ -41,16 +41,24 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
 
     @Override
     public long getItemId(int position) {
-        return super.getItemId(position);
+        return (long) fragments.get(position).hashCode();
     }
 
     @Override
     public boolean containsItem(long itemId) {
-        return super.containsItem(itemId);
+        return fragments.contains(itemId);
     }
 
     public void add(MoneyBoxDto moneyBoxDto) {
         fragments.add(ScreenSlidePageFragment.newInstance(moneyBoxDto, fa.getApplicationContext()));
         notifyDataSetChanged();
+    }
+
+    public void delete(int position) {
+        fragments.remove(position);
+        notifyDataSetChanged();
+        if (fragments.size() == 0) {
+            textView.setVisibility(View.VISIBLE);
+        }
     }
 }
