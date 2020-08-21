@@ -20,13 +20,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static int REQUEST_CODE = 1;
+    private static final int REQUEST_CODE = 1;
     private Toolbar toolbar;
-    private DrawerLayout drawer;
     private ViewPagerAdapter adapter;
     private ViewPager2 viewPager;
     private FloatingActionButton fabAdd;
-    private FloatingActionButton fabDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,19 +67,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    private void goToDrawerScreen() {
-
-        drawer = findViewById(R.id.drawer_layout);
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new HomeFragment()).commit();
-
     }
 
     public void addMoneyBox(View v) {
