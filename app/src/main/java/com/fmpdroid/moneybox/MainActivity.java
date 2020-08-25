@@ -7,11 +7,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.fmpdroid.moneybox.adapter.ViewPagerAdapter;
@@ -25,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewPagerAdapter adapter;
     private ViewPager2 viewPager;
     private FloatingActionButton fabAdd;
+    private FloatingActionButton fabDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addMoneyBox(View v) {
-        Intent myIntent = new Intent(this, CreateMoneyBox.class);
+        Intent myIntent = new Intent(this, CreateMoneyBoxActivity.class);
         MainActivity.this.startActivityForResult(myIntent, REQUEST_CODE);
     }
 
