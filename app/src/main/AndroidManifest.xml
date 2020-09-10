@@ -20,7 +20,8 @@
         <activity
             android:name=".CreateMoneyBoxActivity"
             android:label="@string/title_activity_create_money_box" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
