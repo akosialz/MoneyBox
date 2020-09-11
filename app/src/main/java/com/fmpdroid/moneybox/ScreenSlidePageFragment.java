@@ -21,18 +21,18 @@ import com.fmpdroid.moneybox.dto.MoneyBoxDto;
 
 public class ScreenSlidePageFragment extends Fragment {
 
-    public AlertDialog.Builder alertBuilder;
-    public AlertDialog alertDialog;
-    public EditText editTextAmount;
-    public ImageView imageViewMoneyBox;
-    public TextView textViewAmount;
-    public TextView tvMoneyBoxName;
-    public TextView tvDescription;
-    public TextView tvRemainingAmount;
-    public TextView tvTargetAmount;
-    public TextView tvDateCreated;
-    public TextView tvTargetDate;
-    public View customView;
+    private AlertDialog.Builder alertBuilder;
+    private AlertDialog alertDialog;
+    private EditText editTextAmount;
+    private ImageView imageViewMoneyBox;
+    private TextView textViewAmount;
+    private TextView tvMoneyBoxName;
+    private TextView tvDescription;
+    private TextView tvRemainingAmount;
+    private TextView tvTargetAmount;
+    private TextView tvDateCreated;
+    private TextView tvTargetDate;
+    private View customView;
 
     @Nullable
     @Override
@@ -70,17 +70,22 @@ public class ScreenSlidePageFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String textAmount = charSequence.toString().trim().length() > 0 ? "Amount: " + charSequence.toString() : "Amount: 0";
+                String textAmount = "Amount: ";
+                if (charSequence.toString().trim().length() <= 0) {
+                    textAmount += "0";
+                } else {
+                    textAmount += charSequence;
+                }
                 textViewAmount.setText(textAmount);
 
-                boolean isEnabled = charSequence.toString().length() == 0 ? false : true;
+                boolean isEnabled = !(charSequence.toString().length() == 0);
                 alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(isEnabled);
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.toString().length() == 1 && s.toString().startsWith("0")) {
-                    s.clear();
+                if (s.toString().startsWith("0")) {
+                    editTextAmount.setText(s.toString().substring(1));
                 }
             }
         });
@@ -94,10 +99,9 @@ public class ScreenSlidePageFragment extends Fragment {
         alertBuilder.setPositiveButton("OK", (dialogInterface, i) -> {
             float inputAmount = Float.parseFloat(editTextAmount.getText().toString());
             float remainingAmount = Float.parseFloat(tvRemainingAmount.getText().toString());
-            if (inputAmount > remainingAmount){
+            if (inputAmount > remainingAmount) {
                 Toast.makeText(getActivity(), "Entered amount should not be greater than the remaining amount", Toast.LENGTH_SHORT).show();
-            }
-            else{
+            } else {
                 float newAmount = remainingAmount - inputAmount;
                 tvRemainingAmount.setText(String.valueOf(newAmount));
             }
