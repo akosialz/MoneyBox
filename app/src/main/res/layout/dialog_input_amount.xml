@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/textViewDialogAmount"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:padding="10dp"
+        android:text="Amount: 0"/>
+
+    <EditText
+        android:id="@+id/editTextDialogAmount"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:padding="10dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:hint="Enter Amount"
+        android:background="@drawable/edit_text_amount"/>
+</LinearLayout>

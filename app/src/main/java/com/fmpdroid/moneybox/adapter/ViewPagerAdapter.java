@@ -19,6 +19,7 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
 
     private List<ScreenSlidePageFragment> fragments = new ArrayList<>();
     private FragmentActivity fa;
+    private TextView textView;
 
     public ViewPagerAdapter(FragmentActivity fa) {
         super(fa);
@@ -28,7 +29,7 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        TextView textView = fa.findViewById(R.id.tv_empty);
+        textView = fa.findViewById(R.id.tv_empty);
         int visibilityValue = fragments.size() == 0 ? View.VISIBLE : View.GONE;
         textView.setVisibility(visibilityValue);
         return fragments.get(position);

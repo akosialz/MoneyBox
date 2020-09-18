@@ -2,30 +2,55 @@ package com.fmpdroid.moneybox;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.fmpdroid.moneybox.dto.MoneyBoxDto;
 
 public class ScreenSlidePageFragment extends Fragment {
 
+    private AlertDialog.Builder alertBuilder;
+    private AlertDialog alertDialog;
+    private EditText editTextAmount;
+    private ImageView imageViewMoneyBox;
+    private TextView textViewAmount;
+    private TextView tvMoneyBoxName;
+    private TextView tvDescription;
+    private TextView tvRemainingAmount;
+    private TextView tvTargetAmount;
+    private TextView tvDateCreated;
+    private TextView tvTargetDate;
+    private View customView;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        TextView tvMoneyBoxName = view.findViewById(R.id.tv_moneyBoxName);
-        TextView tvDescription = view.findViewById(R.id.tv_description);
-        TextView tvRemainingAmount = view.findViewById(R.id.tv_remainingAmount);
-        TextView tvTargetAmount = view.findViewById(R.id.tv_targetAmount);
-        TextView tvDateCreated = view.findViewById(R.id.tv_dateCreated);
-        TextView tvTargetDate = view.findViewById(R.id.tv_targetDate);
+        tvMoneyBoxName = view.findViewById(R.id.tv_moneyBoxName);
+        tvDescription = view.findViewById(R.id.tv_description);
+        tvRemainingAmount = view.findViewById(R.id.tv_remainingAmount);
+        tvTargetAmount = view.findViewById(R.id.tv_targetAmount);
+        tvDateCreated = view.findViewById(R.id.tv_dateCreated);
+        tvTargetDate = view.findViewById(R.id.tv_targetDate);
+
+        customView = View.inflate(getActivity(), R.layout.dialog_input_amount, null);
+
+        textViewAmount = customView.findViewById(R.id.textViewDialogAmount);
+        editTextAmount = customView.findViewById(R.id.editTextDialogAmount);
+        imageViewMoneyBox = view.findViewById(R.id.imageView);
 
         Bundle bundle = getArguments();
         if (bundle != null) {
@@ -37,6 +62,57 @@ public class ScreenSlidePageFragment extends Fragment {
             tvDateCreated.setText(moneybox.getDateCreated());
             tvTargetDate.setText(moneybox.getTargetDate());
         }
+
+        editTextAmount.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String textAmount = "Amount: ";
+                if (charSequence.toString().trim().length() <= 0) {
+                    textAmount += "0";
+                } else {
+                    textAmount += charSequence;
+                }
+                textViewAmount.setText(textAmount);
+
+                boolean isEnabled = !(charSequence.toString().length() == 0);
+                alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(isEnabled);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.toString().startsWith("0")) {
+                    editTextAmount.setText(s.toString().substring(1));
+                }
+            }
+        });
+        editTextAmount.setOnFocusChangeListener((view2, hasFocus) -> {
+            String hintText = hasFocus ? "" : "Enter Amount";
+            editTextAmount.setHint(hintText);
+        });
+
+        alertBuilder = new AlertDialog.Builder(getActivity(), R.style.custom_alert_dialog_style);
+        alertBuilder.setView(customView);
+        alertBuilder.setPositiveButton("OK", (dialogInterface, i) -> {
+            float inputAmount = Float.parseFloat(editTextAmount.getText().toString());
+            float remainingAmount = Float.parseFloat(tvRemainingAmount.getText().toString());
+            if (inputAmount > remainingAmount) {
+                Toast.makeText(getActivity(), "Entered amount should not be greater than the remaining amount", Toast.LENGTH_SHORT).show();
+            } else {
+                float newAmount = remainingAmount - inputAmount;
+                tvRemainingAmount.setText(String.valueOf(newAmount));
+            }
+        });
+        alertBuilder.setNegativeButton("Cancel", (dialogInterface, i) -> dialogInterface.dismiss());
+        alertDialog = alertBuilder.create();
+
+        imageViewMoneyBox.setOnClickListener(view1 -> {
+            alertDialog.show();
+            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+        });
 
         return view;
     }
