@@ -10,11 +10,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.fmpdroid.moneybox.adapter.ViewPagerAdapter;
 import com.fmpdroid.moneybox.dto.MoneyBoxDto;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager2 viewPager;
     private FloatingActionButton fabAdd;
     private FloatingActionButton fabDelete;
+    private DrawerLayout drawer;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +71,25 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(menuItem -> {
+            switch (menuItem.getItemId()) {
+                case R.id.nav_personalize:
+                case R.id.nav_currency:
+                case R.id.nav_graph:
+                case R.id.nav_archives:
+                case R.id.nav_support:
+                    Toast.makeText(MainActivity.this, menuItem.getTitle().toString() + " is selected", Toast.LENGTH_SHORT).show();
+            }
+            return false;
+        });
     }
 
     public void addMoneyBox(View v) {
@@ -100,8 +124,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /*
-    /*Will be used later
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -109,6 +131,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             finishAffinity();
         }
-    }*/
+    }
 
 }
